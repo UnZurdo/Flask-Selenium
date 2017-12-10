@@ -3,12 +3,16 @@
 {% block content %}
 
 <div class="jumbotron">
-  <h1 class="display-3">Get Started!</h1>
-<form class="form" action="/search/" method="post">
-  URL: <input type="text" name="url"><br>
-  User: <input type="text" name="user"><br>
-  Password: <input type="text" name="pw"><br>
-  <input type="submit" value="post">
+  <h1 class="display-3">Search a page</h1>
+<form class="form" action="/search/facebook/{{id}}" method="post">
+
+  Email: <input type="text" name="user"><br>
+  Password: <input type="password" id="password" name="pw" class="form-control" data-toggle="password">
+  <input class="btn" type="submit" value="post">
+  <a href="/services/{{id}}" class="btn " role="button" aria-pressed="true">Bo Back</a>
+  <a href="/" class="btn " role="button" aria-pressed="true">Home</a>
+
+
 </form>
 
 </div>

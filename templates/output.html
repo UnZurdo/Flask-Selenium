@@ -3,8 +3,18 @@
 {% block content %}
 
 <div class="jumbotron">
+  <form class="form" action="{{ url_for('sendFile')}}" method="post">
+  <input type="hidden" name="file" value={{info}}>
+  <input class="btn" type="submit" name="json" value="Download Json" >
+  </form>
   <h1 class="display-3">JSON request</h1>
   <h2>Number of elements = {{ elements }}</h2>
+  <br>
+  <br>
+  <p> {{info|tojson|safe}}</p>
+  <br>
+  <br>
+
 
   </div>
 

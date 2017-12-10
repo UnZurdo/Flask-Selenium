@@ -1,0 +1,19 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<div class="jumbotron">
+  <h1 class="display-3">Search a page</h1>
+<form class="form" action="/search/twitter/{{id}}" method="post">
+
+  Email: <input type="text" name="user"><br>
+  Password: <input type="password" id="password" name="pw" class="form-control" data-toggle="password">
+  <input class="btn" type="submit" value="post">
+  <a href="/services/{{id}}" class="btn " role="button" aria-pressed="true">Bo Back</a>
+  <a href="/" class="btn " role="button" aria-pressed="true">Home</a>
+
+</form>
+
+</div>
+
+{% endblock %}

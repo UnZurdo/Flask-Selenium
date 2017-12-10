@@ -1,0 +1,43 @@
+
+
+header{
+  margin-bottom: 100px;
+}
+
+.content{
+  margin-top: 100px;
+}
+
+.navbar-brand-centered {
+    position: absolute;
+    left: 35%;
+    margin-top: -30px;
+    display: block;
+    width: 600px;
+    text-align: center;
+    background-color: transparent;
+}
+.navbar>.container .navbar-brand-centered,
+.navbar>.container-fluid .navbar-brand-centered {
+    margin-left: -80px;
+}
+
+.title{
+  font-size: 3pc;
+  font-family:Helvetica;
+  font-weight: 900;
+}
+
+.title-app{
+  font-size: 3pc;
+  font-family:Helvetica;
+  font-weight: 900;
+  color: #666666;
+}
+
+.title-auto{
+  font-size: 1pc;
+  font-family:Helvetica;
+  font-weight: 600;
+  color: #666666;
+}

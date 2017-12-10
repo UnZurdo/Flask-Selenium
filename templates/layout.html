@@ -8,42 +8,81 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    {# <link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}" />#}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}" />
     <title>Web Scraping</title>
 </head>
 <body>
+  <nav class="navbar navbar-default" role="navigation">
+<div class="container">
+<!-- Brand and toggle get grouped for better mobile display -->
+<div class="navbar-header">
+<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-brand-centered">
+  <span class="sr-only">Toggle navigation</span>
+  <span class="icon-bar"></span>
+  <span class="icon-bar"></span>
+  <span class="icon-bar"></span>
+</button>
+<div class="navbar-brand navbar-brand-centered inline"> <a class="nav-link title-app" href="/"><h1 href="/" class="title">WEB SCRAPING</h1></a></div>
+<div class="navbar-link"> <a class="nav-link title-auto " href="/">Automatic TESTING</a></div>
 
-    {# <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
-                <a class="navbar-brand " href="{% url 'hello' %}"><img src="/static/polls/images/logo.png" height="60" width="110" /></a>
-                <ul class="navbar-nav">
-                  <li class="nav-item">
-                    <a class="nav-link" href="/admin"></a>
-                  </li>
-                  <li class="nav-item">
-                        <a class="nav-link" href="{% url 'hello' %}"><h2 class="brand-title">The Decision Game</h2></a>
-                </li>
-                  <div class=right>
-                  <li class="nav-item">
-                        <a class="nav-link2" href="/polls/register/">Register</a>
-                    </li>
-                    <li class="nav-item">
-                            <a class="nav-link2" href="/polls/login/">Login</a>
-                    </li>
-                    <li class="nav-item">
-                            <a class="nav-link2" href="/polls/logout/">Logout</a>
-                    </li>
-                </div>
-                </ul>
-    </nav>#}
-    <header class="container center-align">>Web Scraping</header>
+</div>
 
-    <div class="container"style="padding-bottom:550px;">
+
+</div><!-- /.navbar-collapse -->
+</div><!-- /.container-fluid -->
+</nav>
+
+    <div class="content container"style="padding-bottom:550px;">
         {% block content%}
         {% endblock %}
 
         <br>
 
     </div>
+
+    <footer class=" pt-0 navbar-bottom">
+
+        <!--Footer Links-->
+        <div class="footer-container container">
+
+            <!--First row-->
+            <div class="row">
+
+                <!--First column-->
+                <div class="col-md-12">
+
+                    <div class="footer-socials mb-5 flex-center">
+
+                        <!--Facebook-->
+                        <a class="icons-sm fb-ic"><i class="fa fa-facebook fa-lg white-text mr-md-4"> </i></a>
+                        <!--Twitter-->
+                        <a class="icons-sm tw-ic"><i class="fa fa-twitter fa-lg white-text mr-md-4"> </i></a>
+                        <!--Google +-->
+                        <a class="icons-sm gplus-ic"><i class="fa fa-google-plus fa-lg white-text mr-md-4"> </i></a>
+                        <!--Linkedin-->
+                        <a class="icons-sm li-ic"><i class="fa fa-linkedin fa-lg white-text mr-md-4"> </i></a>
+                        <!--Instagram-->
+                        <a class="icons-sm ins-ic"><i class="fa fa-instagram fa-lg white-text mr-md-4"> </i></a>
+                        <!--Pinterest-->
+                        <a class="icons-sm pin-ic"><i class="fa fa-pinterest fa-lg white-text"> </i></a>
+                    </div>
+                </div>
+                <!--/First column-->
+            </div>
+            <!--/First row-->
+        </div>
+        <!--/Footer Links-->
+
+        <!--Copyright-->
+        <div class="footer-copyright">
+            <div class="container-fluid">
+                © 2017 Copyright: <a href="https://albert0garcia.com" target="_blank" style="color: #8c8c8c; margin-left:10px;"> albert0garcia </a>
+            </div>
+        </div>
+        <!--/Copyright-->
+
+    </footer>
+    <!--/Footer-->
 
 </body>
 </html>
