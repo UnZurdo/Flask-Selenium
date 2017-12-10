@@ -1,0 +1,16 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<div class="jumbotron">
+  <h1 class="display-3">Get Started!</h1>
+<form class="form" action="/search/" method="post">
+  URL: <input type="text" name="url"><br>
+  User: <input type="text" name="user"><br>
+  Password: <input type="text" name="pw"><br>
+  <input type="submit" value="post">
+</form>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,16 @@
+1512922015939	geckodriver	INFO	geckodriver 0.19.1
+1512922015945	geckodriver	INFO	Listening on 127.0.0.1:53588
+1512922149987	geckodriver	INFO	geckodriver 0.19.1
+1512922149993	geckodriver	INFO	Listening on 127.0.0.1:53725
+1512922152065	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\alber\\AppData\\Local\\Temp\\rust_mozprofile.CxnFoVWgSsfg"
+1512922152502	Marionette	INFO	Enabled via --marionette
+1512922153627	Marionette	INFO	Listening on port 53731
+1512922153675	Marionette	WARN	TLS certificate errors will be ignored for this session
+1512922153723	Marionette	DEBUG	Register listener.js for window 4294967297
+1512922153780	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1512922154470	Marionette	DEBUG	Received DOM event "pagehide" for "about:blank"
+1512922154470	Marionette	DEBUG	Received DOM event "unload" for "about:blank"
+1512922154554	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "https://www.google.es/?gfe_rd=cr&dcr=0&ei=LFwtWo2TBeyJ8QfzuLO4Ag&gws_rd=ssl"
+1512922155076	Marionette	DEBUG	Received DOM event "pageshow" for "https://www.google.es/?gfe_rd=cr&dcr=0&ei=LFwtWo2TBeyJ8QfzuLO4Ag&gws_rd=ssl"
+1512922221644	Marionette	DEBUG	Register listener.js for window 4294967302
+1512922221871	Marionette	DEBUG	Register listener.js for window 8589934593
