@@ -1,7 +1,7 @@
 from flask import Flask, render_template, url_for, request, json, jsonify, redirect
 from datetime import datetime
 import requests
-from bs4 import BeautifulSoup
+
 from tweepyFunctions import *
 import datetime
 try:
@@ -9,6 +9,7 @@ try:
 except ImportError:
     from io import StringIO
 
+import os
 import csv
 from flask import make_response
 
@@ -26,6 +27,8 @@ CONSUMER_KEY = 'l2EF8otpmNPXVQy8bXp7lSkZH'
 CONSUMER_SECRET = 'v1Xr0dEYqLv9pVF985Cg9hf1WIfqOLszjz6npdRJMdimQ911pe'
 ACCESS_TOKEN = '2723252692-LpDhLkKBUzx79283gDwA4Jg3uoGGz1ED2K5cIdY'
 ACCESS_TOKEN_SECRET = '94qwUPMLK4rbynJaOZgxYQhK1i8LEiw7Po9arTBhhD9iO'
+# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = os.getcwd()
 
 auth = OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
 auth.set_access_token(ACCESS_TOKEN, ACCESS_TOKEN_SECRET)
@@ -74,9 +77,9 @@ def get_browserFacebook(id):
     # create a new Firefox session
     # driver = webdriver.Firefox()
     if id == "Firefox":
-        driver = webdriver.Firefox(executable_path=r'C:\Users\alber\Projects\flask\geckodriver.exe')
+        driver = webdriver.Firefox(executable_path=BASE_DIR+'\geckodriver.exe')
     elif id == "Chrome":
-        driver = webdriver.Chrome(executable_path=r'C:\Users\alber\Projects\flask\chromedriver.exe')
+        driver = webdriver.Chrome(executable_path=BASE_DIR+'\chromedriver.exe')
     else:
         return render_template("SearchEngine.html")
 
@@ -104,9 +107,9 @@ def get_browserGoogle(id):
     # create a new Firefox session
     # driver = webdriver.Firefox()
     if id == "Firefox":
-        driver = webdriver.Firefox(executable_path=r'C:\Users\alber\Projects\flask\geckodriver.exe')
+        driver = webdriver.Firefox(executable_path=BASE_DIR+'\geckodriver.exe')
     elif id == "Chrome":
-        driver = webdriver.Chrome(executable_path=r'C:\Users\alber\Projects\flask\chromedriver.exe')
+        driver = webdriver.Chrome(executable_path=BASE_DIR+'\chromedriver.exe')
     else:
         return render_template("SearchEngine.html")
 
