@@ -1,13 +1,35 @@
-from flask import Flask, render_template, url_for, request, json, jsonify
+from flask import Flask, render_template, url_for, request, json, jsonify, redirect
 from datetime import datetime
 import requests
 from bs4 import BeautifulSoup
+from tweepyFunctions import *
+import datetime
+try:
+    from StringIO import StringIO
+except ImportError:
+    from io import StringIO
+
+import csv
+from flask import make_response
 
 
 #-- WEB SCRAPING --
 import selenium
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+
+#--- Tweepy --
+import tweepy
+from tweepy.auth import OAuthHandler
+
+CONSUMER_KEY = 'l2EF8otpmNPXVQy8bXp7lSkZH'
+CONSUMER_SECRET = 'v1Xr0dEYqLv9pVF985Cg9hf1WIfqOLszjz6npdRJMdimQ911pe'
+ACCESS_TOKEN = '2723252692-LpDhLkKBUzx79283gDwA4Jg3uoGGz1ED2K5cIdY'
+ACCESS_TOKEN_SECRET = '94qwUPMLK4rbynJaOZgxYQhK1i8LEiw7Po9arTBhhD9iO'
+
+auth = OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
+auth.set_access_token(ACCESS_TOKEN, ACCESS_TOKEN_SECRET)
+api = tweepy.API(auth)
 
 app = Flask(__name__)
 
@@ -16,6 +38,16 @@ def sendFile():
     webscraping = jsonify(request.form['file'])
     webscraping.headers['Content-Disposition'] = 'attachment;filename=webscraping.json'
     return webscraping
+
+@app.route('/download/twitter/csv/', methods=['POST'])
+def download_csv():
+
+    response = make_response(request.form['csv'])
+    cd = 'attachment; filename=tweets.csv'
+    response.headers['Content-Disposition'] = cd
+    response.mimetype='text/csv'
+
+    return response
 
 @app.route('/')
 def homepage():
@@ -35,7 +67,7 @@ def newGooglek(id):
 
 @app.route('/new_form/Twitter/<string:id>')
 def newTwitter(id):
-    return render_template("formTwitter.html")
+    return render_template("formTwitter.html",id=id)
 
 @app.route('/search/facebook/<string:id>', methods=['POST'])
 def get_browserFacebook(id):
@@ -104,38 +136,29 @@ def get_browserGoogle(id):
     # info = json.loads(info.decode("utf-8"))
     return render_template("output.html", elements = elements, info=info)
 
-@app.route('/search/twitter/<string:id>', methods=['POST'])
+@app.route('/search/twitter/<string:id>',methods=['GET', 'POST'])
 def get_browserTwitter(id):
-    # create a new Firefox session
-    # driver = webdriver.Firefox()
-    if id == "Firefox":
-        driver = webdriver.Firefox(executable_path=r'C:\Users\alber\Projects\flask\geckodriver.exe')
-    elif id == "Chrome":
-        driver = webdriver.Chrome(executable_path=r'C:\Users\alber\Projects\flask\chromedriver.exe')
-    else:
-        return render_template("SearchEngine.html")
+    if request.method=='POST':
+        if id == "all":
+            return render_template("mostrarTweets.html", elements=request.form['num'], tweets=request.form['tweets'])
 
-    driver.implicitly_wait(30)
-    # driver.maximize_window()
+    n = request.form['num']
+    user = request.form['user']
+
     try:
-    # navigate to the application home page
-        driver.get('https://twitter.com/login')
+        stuff = get_stuff(api,user)
+        tweets=[]
+        tweets2=[]
+        tweetsENDL,tweets = get_tweets(stuff, int(n))
 
-        username_field = driver.find_element_by_class_name("js-username-field")
-        password_field = driver.find_element_by_class_name("js-password-field")
 
-        username_field.send_keys(request.form['user'])
-        driver.implicitly_wait(1)
-
-        password_field.send_keys(request.form['pw'])
-        driver.implicitly_wait(1)
-
-        driver.find_element_by_class_name("EdgeButtom--medium").click()
-
-        return render_template("output.html")
+        if id=="partial":
+            return render_template("mostrarTweets.html", elements=n, tweets=tweetsENDL[:25], all= tweets)
+        else:
+            return render_template("formTwitter.html",id=id)
 
     except requests.exceptions.RequestException as e:
-        return render_template("new_form.html", elements = elements)
+        return render_template("formTwiter.html",id=id)
 
 
 if __name__ == '__main__':

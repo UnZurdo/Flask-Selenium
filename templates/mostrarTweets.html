@@ -1,0 +1,29 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<div class="jumbotron">
+
+
+  <h1 class="display-3">Tweets</h1>
+  <h2>Number of tweets = {{ elements }}</h2>
+  <br>
+  <br>
+  <p> {{tweets}}</p>
+  <br>
+  <br>
+
+  <form class="form" action="/search/twitter/all" method="post">
+  <input type="hidden" name="tweets" value="{{all}}">
+  <input type="hidden" name="num" value="{{elements}}">
+  <input class="btn" style="margin-bottom:5px;" type="submit" value="Show All" >
+  </form>
+  <form class="form" action="/download/twitter/csv/" method="post">
+  <input type="hidden" name="csv" value="{{all}}">
+  <input class="btn" type="submit"  value="Download CSV" >
+  </form>
+
+
+  </div>
+
+{% endblock %}
