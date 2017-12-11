@@ -77,9 +77,9 @@ def get_browserFacebook(id):
     # create a new Firefox session
     # driver = webdriver.Firefox()
     if id == "Firefox":
-        driver = webdriver.Firefox(executable_path=BASE_DIR+'\geckodriver.exe')
+        driver = webdriver.Firefox(executable_path=BASE_DIR+'\geckodriver')
     elif id == "Chrome":
-        driver = webdriver.Chrome(executable_path=BASE_DIR+'\chromedriver.exe')
+        driver = webdriver.Chrome(executable_path=BASE_DIR+'\chromedriver')
     else:
         return render_template("SearchEngine.html")
 
@@ -107,9 +107,9 @@ def get_browserGoogle(id):
     # create a new Firefox session
     # driver = webdriver.Firefox()
     if id == "Firefox":
-        driver = webdriver.Firefox(executable_path=BASE_DIR+'\geckodriver.exe')
+        driver = webdriver.Firefox(executable_path=BASE_DIR+'\geckodriver')
     elif id == "Chrome":
-        driver = webdriver.Chrome(executable_path=BASE_DIR+'\chromedriver.exe')
+        driver = webdriver.Chrome(executable_path=BASE_DIR+'\chromedriver')
     else:
         return render_template("SearchEngine.html")
 
